@@ -35,7 +35,7 @@ public class StatsService {
         int minSalesIndex = 0;
         int minSalesValue = salesMonth[0];
         for (int i = 0; i < salesMonth.length; i++) {
-            if (salesMonth[i] <= minSalesValue) {
+            if (salesMonth[i] < minSalesValue) {
                 minSalesValue = salesMonth[i];
                 minSalesIndex = i;
             }
