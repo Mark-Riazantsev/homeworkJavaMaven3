@@ -11,66 +11,49 @@ public class StatsService {
     }
 
     public int averageSumSales(int[] salesMonth) {
-        int sum = 0;
-        for (int i = 0; i < salesMonth.length; i++) {
-            sum += salesMonth[i];
-
-        }
-        return sum / salesMonth.length;
+        return sumSales(salesMonth) / 12;
     }
 
     public int recentPeakSales(int[] salesMonth) {
         int peakSalesIndex = 0;
-        int peakSalesValue = salesMonth[0];
         for (int i = 0; i < salesMonth.length; i++) {
-            if (salesMonth[i] >= peakSalesValue) {
-                peakSalesValue = salesMonth[i];
+            if (salesMonth[i] >= salesMonth[peakSalesIndex]) {
                 peakSalesIndex = i;
             }
         }
-        return peakSalesIndex;
+        return peakSalesIndex + 1;
     }
 
     public int recentMinSales(int[] salesMonth) {
         int minSalesIndex = 0;
-        int minSalesValue = salesMonth[0];
         for (int i = 0; i < salesMonth.length; i++) {
-            if (salesMonth[i] < minSalesValue) {
-                minSalesValue = salesMonth[i];
+            if (salesMonth[i] <= salesMonth[minSalesIndex]) {
                 minSalesIndex = i;
             }
         }
-        return minSalesIndex;
+        return minSalesIndex + 1;
     }
+
     public int countSalesIndexesBelowAverage(int[] salesMonth) {
-        int sum = 0;
-        for (int i = 0; i < salesMonth.length; i++) {
-            sum += salesMonth[i];
-            }
-        int average  = sum / salesMonth.length;
-
         int count = 0;
-        for (int i =0; i < salesMonth.length; i++){
-            if (salesMonth[i] < average) {
-                count++;
-            }
-        }
-return count;
-    }
-    public int countSalesIndexesAboveAverage(int[] salesMonth) {
-        int sum = 0;
-        for (int i = 0; i < salesMonth.length; i++) {
-            sum += salesMonth[i];
-        }
-        int average  = sum / salesMonth.length;
-
-        int count = 0;
-        for (int i =0; i < salesMonth.length; i++){
-            if (salesMonth[i] > average) {
+        int averageSale = averageSumSales(salesMonth);
+        for (int sale : salesMonth) {
+            if (sale < averageSale) {
                 count++;
             }
         }
         return count;
-}
+    }
+
+    public int countSalesIndexesAboveAverage(int[] salesMonth) {
+        int count = 0;
+        int averageSale = averageSumSales(salesMonth);
+        for (int sale : salesMonth) {
+            if (sale > averageSale) {
+                count++;
+            }
+        }
+        return count;
+    }
 }
 

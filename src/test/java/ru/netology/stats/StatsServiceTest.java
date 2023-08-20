@@ -37,10 +37,10 @@ public class StatsServiceTest {
 
         int[] salesMonths = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
 
-        int expectedAverageSum = 7;
-        int actualAverageSum = service.recentPeakSales(salesMonths);
+        int expectedPicksales = 8;
+        int actualPicksales = service.recentPeakSales(salesMonths);
 
-        Assertions.assertEquals(expectedAverageSum, actualAverageSum);
+        Assertions.assertEquals(expectedPicksales, actualPicksales);
     }
 
     @Test
@@ -61,10 +61,10 @@ public class StatsServiceTest {
 
         int[] salesMonths = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
 
-        int expectedAverageSum = 7;
-        int actualAverageSum = service.recentPeakSales(salesMonths);
+        int expectedBelowAverage = 5;
+        int actualBelowAverage = service.recentPeakSales(salesMonths);
 
-        Assertions.assertEquals(expectedAverageSum, actualAverageSum);
+        Assertions.assertEquals(expectedBelowAverage, actualBelowAverage);
     }
 
     @Test
@@ -73,9 +73,9 @@ public class StatsServiceTest {
 
         int[] salesMonths = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
 
-        int expectedAverageSum = 7;
-        int actualAverageSum = service.recentPeakSales(salesMonths);
+        int expectedAboveAverage = 5;
+        int actualAboveAverage = service.recentPeakSales(salesMonths);
 
-        Assertions.assertEquals(expectedAverageSum, actualAverageSum);
+        Assertions.assertEquals(expectedAboveAverage, actualAboveAverage);
     }
 }
